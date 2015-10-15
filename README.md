@@ -2,7 +2,7 @@
 
 This is team 13 - Codestantiate! 
 
-We are a team from University at Buffalo!
+We are a team from University at Buffalo and MIT!
 
 # Team Members
 
@@ -14,3 +14,6 @@ Mengpei Hu
 
 Chern Yee Chua
 
+Linda Jing
+
+Nikhil Buduma
