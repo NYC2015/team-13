@@ -1,4 +1,4 @@
-# team-13 - Codestantiate
+JP Morgan Code for Good Challenge in New York
 
 This is team 13 - Codestantiate! 
 
@@ -8,12 +8,12 @@ We are a team from University at Buffalo and MIT!
 
 Jarret Hutchison 
 
-Winnie Liang
+Winnie Liang 
 
-Mengpei Hu
+Mengpei Hu 
 
-Chern Yee Chua
+Chern Yee Chua 
 
-Linda Jing
+Linda Jing 
 
 Nikhil Buduma
