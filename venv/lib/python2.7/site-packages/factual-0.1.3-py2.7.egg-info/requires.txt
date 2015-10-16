@@ -1,0 +1,4 @@
+simplejson
+httplib2
+unidecode
+oauth2
