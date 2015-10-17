@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,8 +24,10 @@ import com.parse.SignUpCallback;
  */
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText firstN, lastN, userN, email, pass, ConfirmPass;
+    private EditText firstN, lastN, userN, email, pass, ConfirmPass, snapID;
     private CheckBox agreement;
+    private RadioButton radioButton;
+    private String role;
 
     @Override
     public void onCreate(Bundle bundle){
@@ -41,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         ConfirmPass = (EditText) findViewById(R.id.confirmPassword);
         TextView termCondition = (TextView) findViewById(R.id.conditionTerm);
         agreement = (CheckBox) findViewById(R.id.agreeCheckBox);
+        snapID = (EditText) findViewById(R.id.snapID);
+
 
         if(getSupportActionBar()!=null){
             getSupportActionBar().setTitle("Register");
@@ -56,12 +62,31 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        role = "Supplier";
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioButton);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+                if(checkedId == R.id.radioSupplier){
+                    role = "Supplier";
+                    snapID.setEnabled(false);
+                }
+                else{
+                    role = "Consumer";
+                    snapID.setEnabled(true);
+                }
+            }
+        });
+
         //Function of Confirm Registration Buttton
         confirmRegButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(pass.getText().toString().equals(ConfirmPass.getText().toString())
-                        && firstN.getText().toString().length() > 0 && lastN.getText().toString().length() >0){
+                        && firstN.getText().toString().length() > 0
+                        && lastN.getText().toString().length() > 0){
+
                     if(agreement.isChecked()) {
                         final ParseUser user = new ParseUser();
                         user.setUsername(userN.getText().toString());
@@ -69,6 +94,14 @@ public class RegisterActivity extends AppCompatActivity {
                         user.setEmail(email.getText().toString());
                         user.put("Last_Name", lastN.getText().toString());
                         user.put("First_Name", firstN.getText().toString());
+                        if(snapID.isEnabled()){
+                            user.put("SNAP ID", snapID.getText().toString());
+                        } else{
+                            user.put("SNAP ID", "unavailable");
+                        }
+                        user.put("Role", role);
+
+
                         user.signUpInBackground(new SignUpCallback() {
                             @Override
                             public void done(ParseException e) {
