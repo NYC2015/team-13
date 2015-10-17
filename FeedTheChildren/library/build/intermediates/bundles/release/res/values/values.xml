@@ -15,6 +15,10 @@
     <item name="md__content" type="id"/>
     <item name="md__drawer" type="id"/>
     <item name="md__menu" type="id"/>
+    <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/string.xml -->
+    <eat-comment/>
+    <string name="parse_app_id">ih10YA22lZ5N8Ivzt5BWfaP6vvIzw3GBXYEz25xY</string>
+    <string name="parse_client_id">lWy21VZzKrUOyTJj6neI1y50saFB7JBYnMDV4Esd</string>
     <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="Widget"/>

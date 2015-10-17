@@ -1,71 +1,27 @@
 package com.team13.jpmorganchase.feedthechildren;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import net.simonvt.menudrawer.MenuDrawer;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.parse.GetCallback;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import net.simonvt.menudrawer.MenuDrawer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -77,15 +33,15 @@ public class ContentActivity extends AppCompatActivity {
     private static final String STATE_CONTENT_TEXT = "net.simonvt.menudrawer.samples.ContentActivity.contentText";
     private static final int POSITION_HOME = 0;
     //private static final int POSITION_FEATURES = 1;
-    private static final int POSITION_CATEGORIES = 2;
-    //private static final int POSITION_ADD_FRIEND = 3;
+    private static final int POSITION_STORE_LOCATION = 2;
+    private static final int POSITION_ADD_FRIEND = 3;
     //private static final int POSITION_SETTING = 4;
-    private static final int POSITION_ADD_LOCATION = 4;
-    private static final int POSITION_REMOVE_LOCATION = 5;
+    private static final int POSITION_ACCOUNT_SETTING = 5;
+    private static final int POSITION_NOTIFICATION_SETTING = 6;
     //private static final int POSITION_OTHERS = 7;
-    private static final int POSITION_RATE_THIS_APP = 7;
-    private static final int POSITION_ABOUT_US = 8;
-    private static final int POSITION_LOGOUT = 9;
+    private static final int POSITION_RATE_THIS_APP = 8;
+    private static final int POSITION_ABOUT_US = 9;
+    private static final int POSITION_LOGOUT = 10;
 
     private MenuDrawer mMenuDrawer;
     private MenuAdapter mAdapter;
@@ -119,12 +75,12 @@ public class ContentActivity extends AppCompatActivity {
 
         List<Object> items = new ArrayList<>();
         items.add(new Item("Home", R.drawable.ic_action_select_all_dark));
-        items.add(new Category("List Filter"));
-        items.add(new Item("Item categories", R.drawable.ic_action_select_all_dark));
-        //items.add(new Item("Categories", R.drawable.ic_action_select_all_dark));
-        items.add(new Category("Supplier only"));
-        items.add(new Item("Add Location", R.drawable.ic_action_select_all_dark));
-        items.add(new Item("Remove Location", R.drawable.ic_action_select_all_dark));
+        items.add(new Category("Consumer"));
+        items.add(new Item("Store Location", R.drawable.ic_action_select_all_dark));
+        items.add(new Item("Categories", R.drawable.ic_action_select_all_dark));
+        items.add(new Category("Supplier"));
+        items.add(new Item("Add item", R.drawable.ic_action_select_all_dark));
+        items.add(new Item("Remove item", R.drawable.ic_action_select_all_dark));
         items.add(new Category(getString(R.string.others)));
         items.add(new Item(getString(R.string.rate_this_app), R.drawable.ic_action_select_all_dark));
         items.add(new Item(getString(R.string.about_us), R.drawable.ic_action_select_all_dark));
@@ -176,10 +132,6 @@ public class ContentActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(Utility.checkNewEntry()){
-            Utility.setChangedRecord();
-            Utility.generateFriendList(user);
-        }
 
         final int drawerState = mMenuDrawer.getDrawerState();
 
@@ -199,7 +151,6 @@ public class ContentActivity extends AppCompatActivity {
 
         this.doubleBackToExitPressedOnce = true;
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
         new Handler().postDelayed(new Runnable() {
 
             @Override
@@ -217,28 +168,27 @@ public class ContentActivity extends AppCompatActivity {
             mMenuDrawer.setActiveView(view, position);
             //mContentTextView.setText(((TextView) view).getText());             // Delete later
             mMenuDrawer.closeMenu();
-            if(Utility.checkNewEntry()){
-                Utility.setChangedRecord();
-                Utility.generateFriendList(user);
-            }
 
             switch(position) {
                 case POSITION_HOME:
                     // Nothing really need to be done...
                     break;
 
-                case POSITION_CATEGORIES:
+                case POSITION_STORE_LOCATION:
+                    Intent intent = new Intent(ContentActivity.this, LocationsActivity.class);
+                    intent.putExtra("categories", new String[]{"fruit","vegetables","oils"});
+                    startActivity(intent);
+                    break;
 
+                case POSITION_ADD_FRIEND:
 
                     break;
 
-
-
-                case POSITION_ADD_LOCATION:
+                case POSITION_ACCOUNT_SETTING:
                     Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
                     break;
 
-                case POSITION_REMOVE_LOCATION:
+                case POSITION_NOTIFICATION_SETTING:
                     Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
                     //do something
                     break;
@@ -260,8 +210,6 @@ public class ContentActivity extends AppCompatActivity {
                             if (e == null) {
                                 Intent intent = new Intent(ContentActivity.this, MainActivity.class);
                                 ContentActivity.this.finish();
-                                Utility.resetExistingFriendList();
-                                Utility.setChangedRecord();
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(getApplicationContext(), getString(R.string.logout_failed), Toast.LENGTH_SHORT).show();

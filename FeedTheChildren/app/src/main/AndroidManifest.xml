@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".FeedApplication"
@@ -11,7 +12,9 @@
         android:icon="@drawable/applogo"
         android:label="@string/app_name"
         android:theme="@style/SampleTheme" >
-
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDB7REY-PddAKExRsNt45zd6Y37yMk4Qvw" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -30,7 +33,11 @@
             android:label="Feed the Children"
             android:screenOrientation="portrait">
         </activity>
-
+        <activity
+            android:name=".LocationsActivity"
+            android:label="Feed the Children"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="Feed"

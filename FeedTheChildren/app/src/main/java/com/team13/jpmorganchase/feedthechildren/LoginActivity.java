@@ -5,10 +5,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.InputType;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -20,19 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseInstallation;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
-import com.parse.SaveCallback;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Arrays;
 
 public class LoginActivity extends Activity {
 
@@ -147,10 +136,6 @@ public class LoginActivity extends Activity {
     }
 
     public void goToLoggedInPage(){
-        if(Utility.checkNewEntry()){
-            Utility.setChangedRecord();
-            Utility.generateFriendList(ParseUser.getCurrentUser());
-        }
         Intent intent = new Intent(LoginActivity.this, ContentActivity.class);
         startActivity(intent);
     }

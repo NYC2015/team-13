@@ -104,9 +104,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int md__drawer=0x7f030004;
         public static int md__menu=0x7f030005;
     }
+    public static final class string {
+        public static int parse_app_id=0x7f040000;
+        public static int parse_client_id=0x7f040001;
+    }
     public static final class style {
-        public static int Widget=0x7f040000;
-        public static int Widget_MenuDrawer=0x7f040001;
+        public static int Widget=0x7f050000;
+        public static int Widget_MenuDrawer=0x7f050001;
     }
     public static final class styleable {
         /** Attributes that can be used with a MenuDrawer.
