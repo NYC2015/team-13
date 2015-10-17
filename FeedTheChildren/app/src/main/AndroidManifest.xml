@@ -27,7 +27,19 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".CategoriesActivity"
+            android:label="Search items"
+            android:parentActivityName =".ContentActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
+        <activity
+            android:name=".MyLocationActivity"
+            android:label="Location"
+            android:parentActivityName =".ContentActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ContentActivity"
             android:label="Feed the Children"

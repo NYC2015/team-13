@@ -33,15 +33,15 @@ public class ContentActivity extends AppCompatActivity {
     private static final String STATE_CONTENT_TEXT = "net.simonvt.menudrawer.samples.ContentActivity.contentText";
     private static final int POSITION_HOME = 0;
     //private static final int POSITION_FEATURES = 1;
-    private static final int POSITION_STORE_LOCATION = 2;
-    private static final int POSITION_ADD_FRIEND = 3;
+    private static final int POSITION_CATEGORIES = 2;
+    //private static final int POSITION_ADD_FRIEND = 3;
     //private static final int POSITION_SETTING = 4;
-    private static final int POSITION_ACCOUNT_SETTING = 5;
-    private static final int POSITION_NOTIFICATION_SETTING = 6;
+    private static final int POSITION_MY_LOCATION = 4;
+    //private static final int POSITION_MY_LOCATION = 5;
     //private static final int POSITION_OTHERS = 7;
-    private static final int POSITION_RATE_THIS_APP = 8;
-    private static final int POSITION_ABOUT_US = 9;
-    private static final int POSITION_LOGOUT = 10;
+    private static final int POSITION_RATE_THIS_APP = 6;
+    private static final int POSITION_ABOUT_US = 7;
+    private static final int POSITION_LOGOUT = 8;
 
     private MenuDrawer mMenuDrawer;
     private MenuAdapter mAdapter;
@@ -75,12 +75,11 @@ public class ContentActivity extends AppCompatActivity {
 
         List<Object> items = new ArrayList<>();
         items.add(new Item("Home", R.drawable.ic_action_select_all_dark));
-        items.add(new Category("Consumer"));
-        items.add(new Item("Store Location", R.drawable.ic_action_select_all_dark));
-        items.add(new Item("Categories", R.drawable.ic_action_select_all_dark));
-        items.add(new Category("Supplier"));
-        items.add(new Item("Add item", R.drawable.ic_action_select_all_dark));
-        items.add(new Item("Remove item", R.drawable.ic_action_select_all_dark));
+        items.add(new Category("List Filter"));
+        items.add(new Item("Item categories", R.drawable.ic_action_select_all_dark));
+        //items.add(new Item("Categories", R.drawable.ic_action_select_all_dark));
+        items.add(new Category("Supplier only"));
+        items.add(new Item("My Location", R.drawable.ic_action_select_all_dark));
         items.add(new Category(getString(R.string.others)));
         items.add(new Item(getString(R.string.rate_this_app), R.drawable.ic_action_select_all_dark));
         items.add(new Item(getString(R.string.about_us), R.drawable.ic_action_select_all_dark));
@@ -174,24 +173,24 @@ public class ContentActivity extends AppCompatActivity {
                     // Nothing really need to be done...
                     break;
 
-                case POSITION_STORE_LOCATION:
-                    Intent intent = new Intent(ContentActivity.this, LocationsActivity.class);
-                    intent.putExtra("categories", new String[]{"fruit","vegetables","oils"});
+                case POSITION_CATEGORIES:
+
+                    Intent intent = new Intent(ContentActivity.this, CategoriesActivity.class);
                     startActivity(intent);
+
+
+
+
+
+
                     break;
 
-                case POSITION_ADD_FRIEND:
+                case POSITION_MY_LOCATION:
+                    Intent intent2 = new Intent(ContentActivity.this, MyLocationActivity.class);
+                    startActivity(intent2);
 
                     break;
 
-                case POSITION_ACCOUNT_SETTING:
-                    Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
-                    break;
-
-                case POSITION_NOTIFICATION_SETTING:
-                    Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
-                    //do something
-                    break;
 
                 case POSITION_RATE_THIS_APP:
                     Toast.makeText(getApplicationContext(), "Coming soon!", Toast.LENGTH_SHORT).show();
