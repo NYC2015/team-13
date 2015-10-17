@@ -1,10 +1,10 @@
-JP Morgan Code for Good Challenge in New York
+# JP Morgan Code for Good Challenge in New York
 
 This is team 13 - Codestantiate! 
 
 We are a team from University at Buffalo and MIT!
 
-# Team Members
+## Team Members
 
 Jarret Hutchison 
 
@@ -18,9 +18,9 @@ Linda Jing
 
 Nikhil Buduma
 
-# API
+## API
 
-## Nutrition Facts Schema
+### Nutrition Facts Schema
 
 ```
 {
