@@ -1,8 +1,8 @@
-# JP Morgan Code for Good Challenge in New York
+# Healthy Harvest
 
 This is team 13 - Codestantiate! 
 
-We are a team from University at Buffalo and MIT!
+We are a team from University at Buffalo and MIT competing in the JP Morgan Code for Good Challenge in New York!
 
 ## Team Members
 
