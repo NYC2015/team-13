@@ -95,6 +95,40 @@ Given an organization ID, we produce a json blob as follows
 }
 ```
 
+### Add products to an organization's inventory
+
+```
+/push_product/<org_id>/<ean_13>/<int:quantity>
+```
+
+Adds `quantity` units of product `ean_13` to the inventory of organization `org_id`
+
+### Make reservation for user
+
+```
+/reserve/<org_id>/<ean_13>/<user_id>/<int:quantity>
+```
+
+Reserve `quantity` units of product `ean_13` from the inventory of organization `org_id` for user `user_id`
+
+### Cancel reservation for user
+
+```
+/cancel/<org_id>/<ean_13>/<user_id>
+```
+
+Cancel reservation for product `ean_13` from organization `org_id` for user `user_id`
+
+### Deliver product to user
+
+```
+/deliver/<org_id>/<ean_13>/<user_id>
+```
+
+Deliver on reservation for product `ean_13` from organization `org_id` for user `user_id`
+
+## Miscellaneous Notes
+
 ### Product Categories
 
 ```
