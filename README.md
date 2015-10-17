@@ -20,6 +20,12 @@ Nikhil Buduma
 
 ## API
 
+### Domain
+
+You can access API by hitting either of the following:
+
+http://159.203.104.60/
+
 ### Get metadata by EAN
 
 ```
