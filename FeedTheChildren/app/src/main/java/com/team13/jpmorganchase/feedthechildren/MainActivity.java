@@ -1,5 +1,6 @@
 package com.team13.jpmorganchase.feedthechildren;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,18 +17,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        ParseUser currentUser = ParseUser.getCurrentUser();
+
+        if(currentUser != null){            //Already logged in (current user exists)
+            goToLoggedInPage();
+        } else {                            //Need to log in
+            goToLoginPage();
+        }
+
     }
+
+
+    @Override
+    protected void onPause(){           //Kill this activity after login
+        super.onPause();
+        this.finish();
+    }
+
+    public void goToLoginPage(){
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToLoggedInPage(){
+        if(Utility.checkNewEntry()){
+            Utility.setChangedRecord();
+            Utility.generateFriendList(ParseUser.getCurrentUser());
+        }
+        Intent intent = new Intent(MainActivity.this, ContentActivity.class);
+        startActivity(intent);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
