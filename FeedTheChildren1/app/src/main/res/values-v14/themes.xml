@@ -1,0 +1,32 @@
+<resources>
+
+    <style name="SampleBase" parent="@style/Theme.AppCompat.Light">
+
+        <item name="colorPrimaryDark">#A30000</item>
+        <item name="colorPrimary">#EDCCCC</item>
+        <item name="colorAccent">#A30000</item>
+
+        <item name="elevation">0dp</item>
+        <item name="android:windowBackground">@color/coolBackground</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+
+    <style name="MyActionBar"
+        parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+
+        <item name="android:titleTextStyle">@style/MyActionBar.TitleText</item>
+        <item name="titleTextStyle">@style/MyActionBar.TitleText</item>
+
+        <item name="background">@color/coolActionBar</item>
+        <item name="android:background">@color/coolActionBar</item>
+    </style>
+
+    <style name="MyActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FAFAFA</item>
+    </style>
+
+</resources>
