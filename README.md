@@ -20,7 +20,53 @@ Nikhil Buduma
 
 ## API
 
-### 
+### Product Categories
+
+```
+Baby Food
+Baking Ingredients
+Bread
+Breakfast Foods
+Butters
+Canned Food
+Canned Fruits & Vegetables
+Cheeses
+Chips
+Cookies
+Dips
+Eggs
+Energy Drinks
+Flours
+Frozen Foods
+Fruits
+Grains
+Granola Bars
+Ice Cream & Frozen Desserts
+Jams & Jellies
+Juices
+Lentils
+Meat Alternatives
+Meat, Poultry, Seafood Products
+Milk & Milk Substitutes
+Noodles & Pasta
+Nutritional Bars, Drinks, and Shakes
+Nuts
+Packaged Foods
+Popcorn
+Prepared Meals
+Pudding
+Rice
+Snacks
+Soda
+Soups & Stocks
+Sugars & Sweeteners
+Syrups
+Vegetables
+Vinegars
+Vitamins & Supplements
+Wheat Flours & Meals
+Yogurt
+```
 
 ### Nutrition Facts Schema
 
