@@ -26,7 +26,7 @@ def get_product_by_ean_for_org(org_id, ean_13):
         return jsonify(result)
     return ""
 
-@app.route('/get_org_products/<org_id>/', methods=['GET'])
+@app.route('/get_org_products/<org_id>', methods=['GET'])
 def get_product_for_org(org_id):
     fb = firebase.FirebaseApplication('https://feedthechildren.firebaseio.com/', None)
     exists = fb.get("/inventory/" + org_id, None, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})

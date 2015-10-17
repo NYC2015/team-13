@@ -20,6 +20,81 @@ Nikhil Buduma
 
 ## API
 
+### Get metadata by EAN
+
+```
+/get_by_ean/<ean_13>
+```
+
+Given an EAN-13 barcode number, returns an instance of our Nutrition Facts Schema (see below)
+
+### Get product information by ORG_ID and EAN
+
+```
+/get_by_ean/<org_id>/<ean_13>
+```
+
+Given an organization ID and an EAN-13 barcode number, we return a json blob of the following format:
+
+```
+{
+	"metadata" : <NutritionFactsSchema>,
+	"quantity" : <int>,
+	"reserved" : <int>,
+	"reservers" : {
+		<user1> : {
+			"quantity" : <int>
+		},
+		<user2> : {
+			"quantity" : <int>
+		},
+		...
+	}
+}
+```
+
+### Get all products of or organization given ORG_ID
+
+```
+/get_org_products/<org_id>
+```
+
+Given an organization ID, we produce a json blob as follows
+
+```
+{
+	<ean1> : {
+		"metadata" : <NutritionFactsSchema>,
+		"quantity" : <int>,
+		"reserved" : <int>,
+		"reservers" : {
+			<user1> : {
+				"quantity" : <int>
+			},
+			<user2> : {
+				"quantity" : <int>
+			},
+			...
+		}
+	},
+	<ean2> : {
+		"metadata" : <NutritionFactsSchema>,
+		"quantity" : <int>,
+		"reserved" : <int>,
+		"reservers" : {
+			<user1> : {
+				"quantity" : <int>
+			},
+			<user2> : {
+				"quantity" : <int>
+			},
+			...
+		}
+	},
+	...
+}
+```
+
 ### Product Categories
 
 ```
