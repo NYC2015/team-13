@@ -88,61 +88,6 @@
         android:hint="Comfirm your password"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Role: "
-            android:textSize="20dp"
-            android:layout_weight="3"/>
-
-        <RadioGroup
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <RadioButton
-                android:id="@+id/radioComsumer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="Consumer"
-                android:checked="true"
-                android:layout_weight="1"/>
-
-            <RadioButton
-                android:id="@+id/radioSupplier"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Supplier"
-                android:textSize="18dp"
-                android:layout_weight="1"/>
-
-        </RadioGroup>
-
-
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/snapID"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="SNAP ID"/>
-
-    <LinearLayout
         android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"

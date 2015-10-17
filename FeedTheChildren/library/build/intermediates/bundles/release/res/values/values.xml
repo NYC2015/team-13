@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/attrs.xml -->
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/src/main/res/values/attrs.xml -->
     <eat-comment/>
     <attr format="reference" name="menuDrawerStyle"/>
-    <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/colors.xml -->
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/src/main/res/values/colors.xml -->
     <eat-comment/>
     <color name="md__defaultBackground">#FF555555</color>
     <declare-styleable name="MenuDrawer"><attr format="reference" name="mdContentBackground"/><attr format="reference" name="mdMenuBackground"/><attr format="dimension" name="mdMenuSize"/><attr format="reference" name="mdActiveIndicator"/><attr format="boolean" name="mdDropShadowEnabled"/><attr format="dimension" name="mdDropShadowSize"/><attr format="color" name="mdDropShadowColor"/><attr format="reference" name="mdDropShadow"/><attr format="dimension" name="mdTouchBezelSize"/><attr format="boolean" name="mdAllowIndicatorAnimation"/><attr format="integer" name="mdMaxAnimationDuration"/></declare-styleable>
-    <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/ids.xml -->
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/src/main/res/values/ids.xml -->
     <eat-comment/>
     <item name="mdActiveViewPosition" type="id"/>
     <item name="mdContent" type="id"/>
@@ -15,7 +15,11 @@
     <item name="md__content" type="id"/>
     <item name="md__drawer" type="id"/>
     <item name="md__menu" type="id"/>
-    <!-- From: file:/Users/Winnie/Documents/team-13/FeedTheChildren/library/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/src/main/res/values/string.xml -->
+    <eat-comment/>
+    <string name="parse_app_id">ih10YA22lZ5N8Ivzt5BWfaP6vvIzw3GBXYEz25xY</string>
+    <string name="parse_client_id">lWy21VZzKrUOyTJj6neI1y50saFB7JBYnMDV4Esd</string>
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="Widget"/>
     <style name="Widget.MenuDrawer">

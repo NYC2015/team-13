@@ -21,7 +21,7 @@
 
 
     <string name="action_settings" > Action Settings </string>
-    <string name="app_name">Healthy Harvest</string>
+    <string name="app_name">Feed the Children</string>
 
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_container">ContainerActivity</string>

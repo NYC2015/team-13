@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/profilepic"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/location_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Location Name" />
+
+        <TextView
+            android:id="@+id/location_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_name"
+            android:layout_alignParentLeft="true"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:text="Addreess"/>
+
+        <Button
+            android:id="@+id/button_view"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            android:hint="View"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
