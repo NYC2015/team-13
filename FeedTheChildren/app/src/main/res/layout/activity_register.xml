@@ -176,7 +176,7 @@
 
     <Button
         android:id="@+id/confirmRegistrationButton"
-        android:background="@color/coolActionBar"
+        android:background="#86e171"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
 
     <Button
         android:id="@+id/cancelRegistrationButton"
-        android:background="@color/coolActionBar"
+        android:background="#86e171"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
