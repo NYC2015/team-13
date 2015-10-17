@@ -22,7 +22,7 @@ Nikhil Buduma
 
 ### Domain
 
-You can access API by hitting either of the following:
+You can access API by hitting any of the following:
 
 http://159.203.104.60/
 
