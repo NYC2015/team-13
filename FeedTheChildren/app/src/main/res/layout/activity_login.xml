@@ -22,8 +22,8 @@
 
     <EditText
         android:padding="5dp"
-        android:background="#fff"
-        android:alpha="0.5"
+        android:background="#9bf488"
+        android:alpha="1.5"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:id="@+id/loginUsername"
@@ -35,8 +35,8 @@
     <EditText
         android:fontFamily="sans-serif"
         android:padding="5dp"
-        android:background="#fff"
-        android:alpha="0.5"
+        android:background="#9bf488"
+        android:alpha="1.5"
         android:layout_width="250dp"
         android:layout_height="30dp"
         android:id="@+id/loginPassword"
