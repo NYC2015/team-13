@@ -49,7 +49,7 @@
         </activity>
         <activity
             android:name=".ContentActivity"
-            android:label="Feed the Children"
+            android:label="Healthy Harvest"
             android:screenOrientation="portrait">
         </activity>
         <activity
@@ -65,7 +65,7 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:label="Feed"
+            android:label="Login"
             android:screenOrientation="portrait">
         </activity>
 

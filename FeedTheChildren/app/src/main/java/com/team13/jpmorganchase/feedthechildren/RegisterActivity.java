@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText firstN, lastN, userN, email, pass, ConfirmPass;
     private CheckBox agreement;
+    private String role;
+    private EditText snapID;
 
     @Override
     public void onCreate(Bundle bundle){
@@ -56,12 +59,31 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        snapID = (EditText) findViewById(R.id.snapID);
+
+
+        role = "Consumer";
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioConsumer) {
+                    role = "Consumer";
+
+                } else {
+
+                    role = "Supplier";
+                }
+            }
+        });
+
         //Function of Confirm Registration Buttton
         confirmRegButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(pass.getText().toString().equals(ConfirmPass.getText().toString())
-                        && firstN.getText().toString().length() > 0 && lastN.getText().toString().length() >0){
+                        && firstN.getText().toString().length() > 0 && lastN.getText().toString().length() >0
+                        && snapID.getText().toString().length() > 0){
                     if(agreement.isChecked()) {
                         final ParseUser user = new ParseUser();
                         user.setUsername(userN.getText().toString());
@@ -69,6 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
                         user.setEmail(email.getText().toString());
                         user.put("Last_Name", lastN.getText().toString());
                         user.put("First_Name", firstN.getText().toString());
+                        user.put("Role", role);
+                        user.put("SNAP_ID", snapID.getText().toString());
                         user.signUpInBackground(new SignUpCallback() {
                             @Override
                             public void done(ParseException e) {

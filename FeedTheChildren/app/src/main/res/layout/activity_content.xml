@@ -20,6 +20,7 @@
         android:layout_height="200dp"
         android:src="@drawable/profilepic"
         android:layout_marginBottom="10dp" />
+
     <TextView
         android:textStyle="bold"
         android:textSize="23sp"
@@ -43,7 +44,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Member since"
+        android:text="Member since: "
         android:layout_marginBottom="4dp"/>
 
     <TextView
@@ -51,7 +52,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="07/21/2006"
+        android:text="--/--/----"
         android:layout_marginBottom="10dp"/>
 
     <TextView
@@ -60,7 +61,7 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Meal Allowance:"
+        android:text="Meal allowance: "
         android:layout_marginBottom="4dp"/>
 
     <TextView
@@ -68,11 +69,11 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4"
+        android:text="0"
         android:layout_marginBottom="10dp"/>
 
 
-    <!-- Delete Late -->
+<!-- Delete Late -->
     <TextView
         android:id="@+id/contentText"
         android:layout_width="wrap_content"

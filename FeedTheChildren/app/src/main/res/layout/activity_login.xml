@@ -5,36 +5,30 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient">
 
-    <ImageView
-
-        android:paddingBottom="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_gravity="center_horizontal" />
 
     <ImageView
         android:paddingLeft="60dp"
         android:paddingRight="60dp"
+        android:paddingTop="45dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:adjustViewBounds="true"
-        android:src="@drawable/title"
+        android:src="@drawable/healthy_harvest_logo"
         android:textSize="40sp"
         android:id="@+id/loginTitleTextView"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="25dp"/>
 
     <EditText
         android:padding="5dp"
         android:background="#fff"
         android:alpha="0.5"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:id="@+id/loginUsername"
         android:inputType="text"
-        android:hint="Your username"
+        android:hint="Username"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"/>
 
@@ -44,39 +38,45 @@
         android:background="#fff"
         android:alpha="0.5"
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:id="@+id/loginPassword"
-        android:hint="Your password"
+        android:hint="Password"
         android:inputType="textPassword"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <Button
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:background="@drawable/login_button"
+        android:background="@drawable/login_button_2"
         android:id="@+id/loginButton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="7dp"/>
+        android:layout_marginBottom="10dp"/>
 
     <Button
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:background="@drawable/register_button"
+        android:background="@drawable/register_button_2"
         android:id="@+id/registerButton"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="7dp"/>
-
-
+        android:layout_gravity="center_horizontal" />
 
     <TextView
         android:layout_width="250dp"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
         android:textColor="#fff"
         android:text="Forgot password?"
         android:id="@+id/forgetPassword"
         android:clickable="true"
         android:layout_gravity="center_horizontal"
         android:gravity="center" />
+
+    <ImageView
+        android:layout_width="89dp"
+        android:layout_height="32dp"
+        android:src="@drawable/feed_the_children_letters"
+        android:id="@+id/imageView"
+        android:layout_gravity="right" />
+
+
 
 </LinearLayout>
