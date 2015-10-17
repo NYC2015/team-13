@@ -26,15 +26,15 @@ Nikhil Buduma
 /get_by_ean/<ean_13>
 ```
 
-Given an EAN-13 barcode number, returns an instance of our Nutrition Facts Schema (see below)
+Given product defined by `ean_13`, returns an instance of our Nutrition Facts Schema (see below)
 
-### Get product information by ORG_ID and EAN
+### Get product information by EAN for an organization
 
 ```
 /get_by_ean/<org_id>/<ean_13>
 ```
 
-Given an organization ID and an EAN-13 barcode number, we return a json blob of the following format:
+Given an organization's `org_id` and a product's `ean_13`, we return a json blob of the following format:
 
 ```
 {
@@ -53,13 +53,13 @@ Given an organization ID and an EAN-13 barcode number, we return a json blob of 
 }
 ```
 
-### Get all products of or organization given ORG_ID
+### Get all products of an organization
 
 ```
 /get_org_products/<org_id>
 ```
 
-Given an organization ID, we produce a json blob as follows
+Given an an organization's `org_id`, we produce a json blob as follows
 
 ```
 {
