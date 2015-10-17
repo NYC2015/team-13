@@ -18,12 +18,14 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.parse.ParseObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.team13.jpmorganchase.feedthechildren.Utility.getLocationList;
+import static com.team13.jpmorganchase.feedthechildren.Utility.YelpAPI.getLocationList;
 
 /**
  *Created by HuMengpei on 9/30/2015.
@@ -89,21 +91,28 @@ public class LocationsActivity extends AppCompatActivity{
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
                     @Override
                     public void onConnected(Bundle bundle) {
-                        
                         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                                 mGoogleApiClient);
                         categories = getIntent().getStringArrayExtra("categories");
-                        ArrayList<ParseObject> list;
+                        ArrayList<JSONObject> list = new ArrayList<JSONObject>();
                         if(mLastLocation!=null) {
                             System.out.println("mLastLocation not null");
-                            list = getLocationList(categories, mLastLocation.getLatitude(), mLastLocation.getLongitude(), 5);
+                            getLocationList(list, getApplicationContext(), categories, mLastLocation.getLatitude(), mLastLocation.getLongitude(), 5);
                         }else{
                             System.out.println("mLastLocation null");
-                            list = getLocationList(categories, 42.85, 78.77, 5);
+                            getLocationList(list, getApplicationContext(), categories, 42.85, 78.77, 5);
                         }
 
 
                         List<Utility.Location> locationList = Utility.convertToLocation(list);
+                        locationList = new ArrayList<Utility.Location>();
+                        try {
+                            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+                            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+                            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         ListView view = (ListView) findViewById(R.id.location_list_view);
                         adapter = new LocationAdaptor(activityReference, R.layout.location_item, locationList);
                         view.setAdapter(adapter);
@@ -156,19 +165,33 @@ public class LocationsActivity extends AppCompatActivity{
                 convertView = getLayoutInflater().inflate(mResource, parent, false);
             }
             TextView name = (TextView) convertView.findViewById(R.id.location_name);
-            name.setText(currentItem.name);
+            //name.setText(currentItem.name);
+            if(position==0){
+                name.setText("Marlowe");
+            }else if(position==1){
+                name.setText("Burger King");
+            }else if(position==2){
+                name.setText("Hally's");
+            }
             TextView address = (TextView) convertView.findViewById(R.id.location_address);
-            address.setText(currentItem.address);
+            if(position==0){
+                address.setText("Address1");
+            }else if(position==1){
+                address.setText("Address2");
+            }else if(position==2){
+                address.setText("Address3");
+            }
             Button view = (Button) convertView.findViewById(R.id.button_view);
-
             view.setTag(position);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    System.out.println("Click View");
                     int position = (int) v.getTag();
                     Utility.Location currentItem = mObject.get(position);
                     Intent intent = new Intent(LocationsActivity.this, ItemsInLocationActivity.class);
                     intent.putExtra("locationID",currentItem.getLocationID());
+                    startActivity(intent);
                 }
             });
             return convertView;

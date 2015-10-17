@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-=======
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -29,7 +27,6 @@
       </value>
     </option>
   </component>
->>>>>>> b2b3b7ae4231a9db22c9f137d3e010d7a9ea1fff
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />

@@ -2,10 +2,8 @@ package com.team13.jpmorganchase.feedthechildren;
 
 import android.content.Context;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-import com.parse.ParseObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.team13.jpmorganchase.feedthechildren.Utility.getLocationList;
 
 /**
  *Created by HuMengpei on 9/30/2015.
@@ -31,34 +25,38 @@ import static com.team13.jpmorganchase.feedthechildren.Utility.getLocationList;
 
 public class ItemsInLocationActivity extends AppCompatActivity{
     ItemsInLocationActivity activityReference = this;
-    private GoogleApiClient mGoogleApiClient;
-    private Location mLastLocation;
     private LocationAdaptor adapter;
     private String[] categories;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locations);
 
-        buildGoogleApiClient(this);
         if(getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setElevation(0);
         }
-
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
+        categories = getIntent().getStringArrayExtra("categories");
+        //ArrayList<ParseObject> list = getLocationList(categories, mLastLocation.getLatitude(),mLastLocation.getLongitude(),5);
+        //List<Utility.Location> locationList = Utility.convertToLocation(list);
+        //List<Utility.Location> locationList = Utility.convertToLocation(list);
+        List<Utility.Location> locationList = new ArrayList<Utility.Location>();
+        try {
+            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+            locationList.add(new Utility.Location("a",new JSONObject("{a:b}"),"a","a"));
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+        ListView view = (ListView) findViewById(R.id.location_list_view);
+        adapter = new LocationAdaptor(activityReference, R.layout.location_item, locationList);
+        view.setAdapter(adapter);
+
+        LinearLayout layout = (LinearLayout)findViewById(R.id.EmptyListView);
+        TextView text = (TextView)layout.findViewById(R.id.EmptyListViewText);
+        text.setText("No Location");
+        view.setEmptyView(layout);
+
     }
 
     @Override
@@ -83,7 +81,7 @@ public class ItemsInLocationActivity extends AppCompatActivity{
     protected void onPause(){
         super.onPause();
         this.finish();
-    }
+    }/*
     protected synchronized void buildGoogleApiClient(Context context) {
         mGoogleApiClient = new GoogleApiClient.Builder(context)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
@@ -94,7 +92,6 @@ public class ItemsInLocationActivity extends AppCompatActivity{
 
                         categories = getIntent().getStringArrayExtra("categories");
                         ArrayList<ParseObject> list = getLocationList(categories, mLastLocation.getLatitude(),mLastLocation.getLongitude(),5);
-
                         List<Utility.Location> locationList = Utility.convertToLocation(list);
                         ListView view = (ListView) findViewById(R.id.location_list_view);
                         adapter = new LocationAdaptor(activityReference, R.layout.location_item, locationList);
@@ -122,7 +119,7 @@ public class ItemsInLocationActivity extends AppCompatActivity{
                 .addApi(LocationServices.API)
                 .build();
     }
-
+*/
 
 
 
@@ -148,9 +145,21 @@ public class ItemsInLocationActivity extends AppCompatActivity{
                 convertView = getLayoutInflater().inflate(mResource, parent, false);
             }
             TextView name = (TextView) convertView.findViewById(R.id.location_name);
-            name.setText(currentItem.name);
+            if(position==0){
+                name.setText("Apple");
+            }else if(position==1){
+                name.setText("Orange");
+            }else if(position==2){
+                name.setText("Pork");
+            }/*
             TextView address = (TextView) convertView.findViewById(R.id.location_address);
-            address.setText(currentItem.address);
+            if(position==0){
+                address.setText("Address1");
+            }else if(position==1){
+                address.setText("Address2");
+            }else if(position==2){
+                address.setText("Address3");
+            }*/
             Button view = (Button) convertView.findViewById(R.id.button_view);
 
             view.setTag(position);

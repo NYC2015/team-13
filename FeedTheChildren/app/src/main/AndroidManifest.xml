@@ -40,6 +40,13 @@
             android:parentActivityName =".ContentActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name=".AddLocationActivity"
+            android:label="Add Location"
+            android:parentActivityName =".ContentActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ContentActivity"
             android:label="Feed the Children"
@@ -47,7 +54,13 @@
         </activity>
         <activity
             android:name=".LocationsActivity"
-            android:label="Feed the Children"
+            android:label="Locations results"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ItemsInLocationActivity"
+            android:label="Items"
+            android:parentActivityName=".LocationsActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

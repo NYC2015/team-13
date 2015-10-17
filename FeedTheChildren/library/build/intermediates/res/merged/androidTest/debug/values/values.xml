@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/Issac/Desktop/13/team-13/FeedTheChildren/library/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/HuMengpei/Desktop/team-13/FeedTheChildren/library/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="menuDrawerStyle"/>
     <color name="md__defaultBackground">#FF555555</color>
