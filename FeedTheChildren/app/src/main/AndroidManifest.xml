@@ -2,22 +2,51 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.team13.jpmorganchase.feedthechildren" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".FeedApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/applogo"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/SampleTheme" >
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name=".ContentActivity"
+            android:label="Feed the Children"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="Feed"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".RegisterActivity"
+            android:label="Feed the Children"
+            android:parentActivityName =".LoginActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
+
     </application>
 
 </manifest>

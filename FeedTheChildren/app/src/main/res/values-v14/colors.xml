@@ -1,0 +1,11 @@
+<resources>
+
+    <color name="windowBackground">#FFE8E8E8</color>
+    <color name="coolBackground">#FAFAFA</color>
+    <color name="coolActionBar">#F0B2B2</color>
+    <color name="buttonDark">#A30000</color>
+    <color name="buttonMedium">#E68080</color>
+    <color name="buttonLightMedium">#FEF7F7</color>
+    <color name="textLight">#FAFAFA</color>
+
+</resources>
