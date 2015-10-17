@@ -34,6 +34,21 @@ def get_product_for_org(org_id):
         return jsonify(exists)
     return ""
 
+@app.route('/get_reservations/<user_id>', methods=['GET'])
+def get_reservations_for_user(user_id):
+    fb = firebase.FirebaseApplication('https://feedthechildren.firebaseio.com/', None)
+    factual = Factual('pFMeueZJQpyZnSPILemUPxzNJmathJyrxoqOnow0', 'ROHZOgzy9GwJGb9egKpzAVTYZq35iuj6f3Uu4rNu')
+    exists = fb.get("/reservations/" + user_id, None, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
+    if exists is not None:
+        for org in exists:
+            for ean in exists[org]:
+                quantity = exists[org][ean]
+                nutrition = factual.table('products-cpg-nutrition').search(ean)
+                resp = nutrition.data()[0]
+                exists[org][ean] = {'quantity' : quantity, 'metadata' : resp}
+        return jsonify(exists)
+    return ""
+
 @app.route('/push_product/<org_id>/<ean_13>/<int:quantity>', methods=['GET'])
 def push_product(org_id, ean_13, quantity):
     fb = firebase.FirebaseApplication('https://feedthechildren.firebaseio.com/', None)
@@ -58,9 +73,11 @@ def reserve(org_id, ean_13, user_id, quantity):
             if user_exists is not None and user_id in user_exists:
                 curr_reserve = int(user_exists[user_id]['quantity'])
                 result = fb.put("/inventory/" + org_id + "/" + ean_13, "reserved", str(reserved + quantity), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
+                result = fb.put("/reservations/" + user_id + "/" + org_id + "/", ean_13, str(quantity + curr_reserve), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
                 result = fb.put("/inventory/" + org_id + "/" + ean_13 + "/reservers", user_id, {'quantity': str(quantity + curr_reserve)}, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
                 return str(result)
             result = fb.put("/inventory/" + org_id + "/" + ean_13, "reserved", str(reserved + quantity), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
+            result = fb.put("/reservations/" + user_id + "/" + org_id + "/", ean_13, str(quantity), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             result = fb.put("/inventory/" + org_id + "/" + ean_13 + "/reservers", user_id, {'quantity': str(quantity)}, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             return str(result)
         return ""
@@ -75,6 +92,7 @@ def cancel(org_id, ean_13, user_id):
         if user_exists is not None and user_id in user_exists:
             curr_reserve = int(user_exists[user_id]['quantity'])
             fb.put("/inventory/" + org_id + "/" + ean_13, "reserved", str(int(exists[ean_13]['reserved']) - curr_reserve), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
+            result = fb.delete("/reservations/" + user_id + "/" + org_id + "/", ean_13, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             result = fb.delete("/inventory/" + org_id + "/" + ean_13 + "/reservers", user_id, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             return str(result)
         return ""
@@ -90,6 +108,7 @@ def deliver(org_id, ean_13, user_id):
             curr_reserve = int(user_exists[user_id]['quantity'])
             fb.put("/inventory/" + org_id + "/" + ean_13, "quantity", str(int(exists[ean_13]['quantity']) - curr_reserve), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             fb.put("/inventory/" + org_id + "/" + ean_13, "reserved", str(int(exists[ean_13]['reserved']) - curr_reserve), params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
+            result = fb.delete("/reservations/" + user_id + "/" + org_id + "/", ean_13, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             result = fb.delete("/inventory/" + org_id + "/" + ean_13 + "/reservers", user_id, params={'print': 'pretty'}, headers={'X_FANCY_HEADER': 'VERY FANCY'})
             return str(result)
         return ""

@@ -133,6 +133,42 @@ Cancel reservation for product `ean_13` from organization `org_id` for user `use
 
 Deliver on reservation for product `ean_13` from organization `org_id` for user `user_id`
 
+### Get all reservations for a user
+
+```
+/get_reservations/<user_id>
+```
+
+Find all reservations (quantity and product metadata) for user `user_id` in the following json blob format
+
+```
+{
+	<org_id1> : {
+		<ean1_1> : {
+			quantity : <int>
+			metadata : <NutritionFactsSchema>
+		},
+		<ean1_2> : {
+			quantity : <int>
+			metadata : <NutritionFactsSchema>
+		},
+		...
+	},
+	<org_id2> : {
+		<ean2_1> : {
+			quantity : <int>
+			metadata : <NutritionFactsSchema>
+		},
+		<ean2_2> : {
+			quantity : <int>
+			metadata : <NutritionFactsSchema>
+		},
+		...
+	},
+	...
+}
+```
+
 ## Miscellaneous Notes
 
 ### Product Categories
