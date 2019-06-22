@@ -65,7 +65,7 @@ Given an organization's `org_id` and a product's `ean_13`, we return a json blob
 /get_org_products/<org_id>
 ```
 
-Given an an organization's `org_id`, we produce a json blob as follows
+Given an organization's `org_id`, we produce a json blob as follows
 
 ```
 {
