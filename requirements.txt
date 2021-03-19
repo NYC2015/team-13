@@ -3,7 +3,7 @@ factual-api==1.7.0
 Flask==0.10.1
 httplib2==0.9.2
 itsdangerous==0.24
-Jinja2==2.8
+Jinja2==2.11.3
 MarkupSafe==0.23
 oauth2==1.9.0.post1
 oauthlib==1.0.3
